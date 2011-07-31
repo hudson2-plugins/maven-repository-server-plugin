@@ -50,8 +50,6 @@ import org.kohsuke.stapler.StaplerResponse;
 public class MavenRespositoryServerPlugin extends Plugin {
 
     private static final Logger log = LoggerFactory.getLogger("maven-repository-server");
-    private MavenBuilderService builderService;
-    private ServletContext context;
     private ArtifactsExtractor extractor;
     private static final LinkedHashMap<String, Build> innerCache = new LinkedHashMap<String, Build>(100) {
         @Override
@@ -68,19 +66,10 @@ public class MavenRespositoryServerPlugin extends Plugin {
     }
 
     @Inject
-    public void setBuilderService(MavenBuilderService builderService) {
-        this.builderService = builderService;
-    }
-
-    @Inject
     public void setExtractor(ArtifactsExtractor extractor) {
         this.extractor = extractor;
     }
 
-    @Override
-    public void setServletContext(ServletContext context) {
-        this.context = context;
-    }
 
     @Override
     public void doDynamic(StaplerRequest req, StaplerResponse rsp) throws IOException, ServletException {

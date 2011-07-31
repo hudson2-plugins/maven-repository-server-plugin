@@ -29,6 +29,7 @@ import hudson.model.FreeStyleProject;
 import hudson.model.Result;
 import hudson.util.RunList;
 import dk.hlyh.hudson.plugins.mavenrepo.MavenRespositoryServerPlugin;
+import java.io.Serializable;
 import java.util.TreeMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,7 +78,7 @@ class Job extends Directory {
         children.put("latest", latest);
         
     }
-    private static class NumberComparator implements java.util.Comparator<String> {
+    private static class NumberComparator implements java.util.Comparator<String>,Serializable {
 
         public NumberComparator() {
         }

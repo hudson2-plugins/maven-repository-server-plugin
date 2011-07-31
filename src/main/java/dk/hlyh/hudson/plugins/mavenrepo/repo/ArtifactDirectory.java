@@ -23,9 +23,6 @@
  */
 package dk.hlyh.hudson.plugins.mavenrepo.repo;
 
-import hudson.model.FreeStyleBuild;
-import java.util.ArrayList;
-import java.util.List;
 import org.hudsonci.maven.model.MavenCoordinatesDTO;
 
 /**
@@ -34,11 +31,9 @@ import org.hudsonci.maven.model.MavenCoordinatesDTO;
  */
 public class ArtifactDirectory extends Directory {
 
-    private MavenCoordinatesDTO mavenCoordinates;
-    
+  
     public ArtifactDirectory(String folderName,MavenCoordinatesDTO mavenCoordinates,Directory parent) {
         super(folderName,parent);
-        this.mavenCoordinates = mavenCoordinates;
     }
 
     @Override

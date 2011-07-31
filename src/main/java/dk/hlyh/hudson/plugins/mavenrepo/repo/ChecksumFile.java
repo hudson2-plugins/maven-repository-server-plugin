@@ -38,7 +38,7 @@ import org.kohsuke.stapler.StaplerResponse;
  */
 public class ChecksumFile extends Element {
 
-    private final int STREAMING_BUFFER_SIZE = 32768;
+    private static final int STREAMING_BUFFER_SIZE = 32768;
     private String algorithm;
     private final String filename;
 

@@ -25,7 +25,6 @@ package dk.hlyh.hudson.plugins.mavenrepo.repo;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -50,7 +49,6 @@ public abstract class Directory extends Element {
         printInformationArea(req, rsp);
         printDirectoryIndex(req, rsp);
         printHtmlFooter(req, rsp);
-        OutputStream os = rsp.getOutputStream();
     }
 
     public Map<String, Element> getChildren() {

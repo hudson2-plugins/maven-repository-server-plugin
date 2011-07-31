@@ -42,16 +42,11 @@ public class Build extends Directory {
     private static final Logger log = LoggerFactory.getLogger("maven-repository-server");
     
     private FreeStyleBuild freeStyleBuild;
-    private static MavenBuilderService builderService;
     private static ArtifactsExtractor extractor;
 
     Build(FreeStyleBuild freeStyleBuild, Job parent) {
         super("" + freeStyleBuild.getNumber(), parent);
         this.freeStyleBuild = freeStyleBuild;
-    }
-
-    public static void setBuilderService(MavenBuilderService value) {
-        builderService = value;
     }
 
     public static void setExtractor(ArtifactsExtractor value) {
