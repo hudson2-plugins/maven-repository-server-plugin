@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
 
@@ -36,7 +38,7 @@ import org.kohsuke.stapler.StaplerResponse;
  */
 public abstract class Directory extends Element {
 
-    protected Map<String, Element> children = new HashMap<String, Element>();
+    protected SortedMap<String, Element> children = new TreeMap<String, Element> ();
 
     protected Directory(String name, Directory parent) {
         super(name, parent);

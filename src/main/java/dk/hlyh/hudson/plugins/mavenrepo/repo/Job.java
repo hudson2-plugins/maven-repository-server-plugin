@@ -29,6 +29,7 @@ import hudson.model.FreeStyleProject;
 import hudson.model.Result;
 import hudson.util.RunList;
 import dk.hlyh.hudson.plugins.mavenrepo.MavenRespositoryServerPlugin;
+import java.util.TreeMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 /**
@@ -43,6 +44,7 @@ class Job extends Directory {
     Job(FreeStyleProject hudsonProject, Directory root) {
         super(hudsonProject.getName(), root);
         this.hudsonProject = hudsonProject;
+        children = new TreeMap<String, Element>(new NumberComparator());
     }
 
     @Override
@@ -75,4 +77,22 @@ class Job extends Directory {
         children.put("latest", latest);
         
     }
+    private static class NumberComparator implements java.util.Comparator<String> {
+
+        public NumberComparator() {
+        }
+
+        public int compare(String o1, String o2) {
+            if (o1.equals("latest")) {
+                return -1;
+            }
+            if (o2.equals("latest")) {
+                return 1;
+            }            
+            int i1 = Integer.parseInt(o1);
+            int i2 = Integer.parseInt(o2);
+            return i2 - i1;
+        }
+    }    
+    
 }
