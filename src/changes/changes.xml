@@ -1,0 +1,15 @@
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+  <properties>
+    <title>Hudson Maven Repository Server Plugin</title>
+    <author email="henrik@hlyh.dk">Henrik Lynggaard Hansen</author>
+  </properties>
+  <body>
+    <release version="0.1" date="31/7-2011" description="First Release">
+      <action dev="lynggaard" type="add">
+        First version includes simple serving of a FreeStyle projects 
+      </action>
+    </release>
+  </body>
+</document>
