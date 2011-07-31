@@ -94,17 +94,17 @@ public class MavenRespositoryServerPlugin extends Plugin {
             // Ignore breakdown case if '/'
             if (pathElements.length > 1 || pathElements[0].length() > 0) {
                 for (String element : pathElements) {
-                    log.info("path element: " + element);
+                    log.debug("path element: " + element);
                     if (currentItem instanceof Directory) {
                         Directory currentDirectory = (Directory) currentItem;
                         currentItem = currentDirectory.getChild(element);
-                        log.info("changing current item from " + currentDirectory + " to " + currentItem);
+                        log.debug("changing current item from " + currentDirectory + " to " + currentItem);
                     }
 
                 }
             }
             if (currentItem != null) {
-                log.info("calling sendResponse on: " + currentItem);
+                log.info("Sending back response: " + currentItem);
                 currentItem.sendResponse(req, rsp);
             } else {
                 log.warn("did not find item, sending 404 ");

@@ -28,7 +28,6 @@ import hudson.model.FreeStyleBuild;
 import java.io.IOException;
 import java.util.Collection;
 import org.hudsonci.maven.model.MavenCoordinatesDTO;
-import org.hudsonci.maven.plugin.builder.MavenBuilderService;
 import org.hudsonci.maven.plugin.dependencymonitor.ArtifactsExtractor;
 import dk.hlyh.hudson.plugins.mavenrepo.MavenRespositoryServerPlugin;
 import org.slf4j.Logger;
@@ -59,7 +58,7 @@ public class Build extends Directory {
 
     @Override
     protected void loadChildren() {
-        log.info("loading children for "+freeStyleBuild.getFullDisplayName());
+        log.debug("loading children for "+freeStyleBuild.getFullDisplayName());
         Collection<MavenCoordinatesDTO> producedArtifacts = extractor.extract(freeStyleBuild).produced;
         
         NamedDirectory repoDir = new NamedDirectory("repository", this);
@@ -74,7 +73,7 @@ public class Build extends Directory {
                 
                 String[] splitGroupId = groupId.split("\\.");
                 
-                log.info("found artifact: "+groupId+":"+artifactId+":"+version+":"+prefixedClassifier+":"+type);
+                log.debug("found artifact: "+groupId+":"+artifactId+":"+version+":"+prefixedClassifier+":"+type);
                 
                 // convert group name to nested folders;
                 Directory groupParent = repoDir;
@@ -105,10 +104,10 @@ public class Build extends Directory {
                 }
                 
                 String arfifactFilename = artifactId + "-" + version + prefixedClassifier + "." + type;
-                log.info("artifact filename should be "+arfifactFilename);
+                log.debug("artifact filename should be "+arfifactFilename);
                 FilePath basePath = new FilePath(freeStyleBuild.getArtifactsDir());
                 FilePath target = basePath.child(groupId).child(artifactId).child(version).child(arfifactFilename);
-                log.info("artifact archived? : "+target.exists()+", "+target);
+                log.debug("artifact archived? : "+target.exists()+", "+target);
 
                 if (target.exists()) {
                     ArtifactItem artifactElement = new ArtifactItem(arfifactFilename, versionDirectory, artifact, this);
@@ -123,7 +122,7 @@ public class Build extends Directory {
                 }
                 String cacheName = freeStyleBuild.getParent().getName()+"@"+freeStyleBuild.getNumber();
                 Element result = MavenRespositoryServerPlugin.buildCache.put(cacheName,this);
-                log.info("added to cache: "+cacheName+"= "+result);
+                log.debug("added to cache: "+cacheName+"= "+result);
                         
             } catch (IOException ex) {
                 log.warn("IOException: ",ex);

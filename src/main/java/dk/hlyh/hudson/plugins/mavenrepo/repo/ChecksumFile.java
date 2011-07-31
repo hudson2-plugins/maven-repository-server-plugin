@@ -31,12 +31,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.binary.Hex;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;  
 /**
  *
  * @author henrik
  */
 public class ChecksumFile extends Element {
+
+    private static final Logger log = LoggerFactory.getLogger("maven-repository-server");
 
     private static final int STREAMING_BUFFER_SIZE = 32768;
     private String algorithm;
@@ -71,6 +74,7 @@ public class ChecksumFile extends Element {
             rsp.getOutputStream().write(encodeded);
 
         } catch (NoSuchAlgorithmException ex) {
+            log.warn("Could not generate '"+algorithm+"' checksum for: "+filename,ex);
             rsp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         } finally {
             try {
