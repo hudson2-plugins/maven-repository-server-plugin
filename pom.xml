@@ -42,6 +42,8 @@ THE SOFTWARE.
     
     <!-- Information -->
     <name>Hudson Maven Repository Server Plugin</name>
+    <description>Hudson Maven Repository Server Plugin exposes builds that use the Maven3 integration as Maven repositories</description>
+    <url>https://github.com/henriklynggaard/hudson-maven-repository-server-plugin</url>
     
     <!-- license -->
     <licenses>
@@ -57,6 +59,14 @@ THE SOFTWARE.
         <developerConnection>scm:git:ssh://git@github.com/henriklynggaard/hudson-maven-repository-server-plugin.git</developerConnection>
         <url>https://github.com/henriklynggaard/hudson-maven-repository-server-plugin.git</url>
     </scm>       
+    
+    <distributionManagement>
+        <site>
+            <id>ghpages</id>
+            <name>GitHub Pages</name>
+            <url>${sites.basedir}/hudson-maven-repository-server-plugin/${project.version}</url>
+        </site>
+    </distributionManagement>
 
     <!-- Team -->
     <developers>
@@ -67,7 +77,13 @@ THE SOFTWARE.
         </developer>
     </developers>    
     
-    <!--  -->
+    
+    <organization>
+        <name>Henrik Lynggaard Hansen</name>
+        <url>http://blog.hlyh.dk/p/about-me.html</url>
+    </organization>
+    
+    <!-- issue managment -->
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/henriklynggaard/hudson-maven-repository-server-plugin/issues</url>
@@ -84,17 +100,10 @@ THE SOFTWARE.
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.0-beta-3</version>
-            </plugin>            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <goals>deploy</goals>
-                </configuration>
-            </plugin>   
+            </plugin>             
         </plugins>
     </build>
+    
     <reporting>
         <plugins>
             <plugin>
