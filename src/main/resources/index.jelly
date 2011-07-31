@@ -1,0 +1,4 @@
+<div>
+  Hudson Maven Repository Server exposes each build as a Maven repository. This is a re-implementation of
+  the jenkins version in order to support the new Maven3 integration in Hudson 2.1
+</div>
